@@ -11,9 +11,6 @@ class ComprasController {
         .split("x")
         .map((dim) => parseFloat(dim.replace(",", ".").replace(".", "")));
       if (dimensions.length === 2) {
-          if(chapa.largura.isInt()){
-            // console.log(chapa.largura)
-          }
         chapa.largura = dimensions[0];
         chapa.comprimento = dimensions[1];
       }
