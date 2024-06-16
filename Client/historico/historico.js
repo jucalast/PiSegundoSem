@@ -1,28 +1,27 @@
 // main.js
-import { loadChapasData } from "./script/sections/chapasTable.js";
-import { loadChapasCards } from "./script/sections/chapaCards.js";
+import { DashboardController } from "./script/sections/dashboardControle.js";
 
 $(document).ready(function () {
-  var ctx1 = document.getElementById("myChart1").getContext("2d");
-  var ctx2 = document.getElementById("myChart2").getContext("2d");
-  var ctx3 = document.getElementById("myChart3").getContext("2d");
+  const dashboardController = new DashboardController();
 
-  loadChapasData(ctx1, ctx2, ctx3);
-  loadChapasCards();
+  $('aside .nav-link').click(function() {
+    var section = $(this).text().toLowerCase();
 
-  $("#chartCarousel").on("slid.bs.carousel", function () {
-    var currentIndex = $(".carousel-item.active").index();
-    $(".carousel-indicators li").removeClass("active");
-    $(".carousel-indicators li").eq(currentIndex).addClass("active");
+    console.log('Clicked on ' + section);
+
+    if (section === 'chapas') {
+      dashboardController.initializeChapas();
+    } else if (section === 'items') {
+      dashboardController.initializeItems();
+    } else if (section === 'máquinas') {
+      // Initialize the Máquinas section
+    } else if (section === 'usuários') {
+      // Initialize the Usuários section
+    }
   });
 
-  $("#myChart1, #myChart2, #myChart3").mouseenter(function () {
-    $("#chartCarousel").carousel("pause");
-  });
-
-  $("#myChart1, #myChart2, #myChart3").mouseleave(function () {
-    $("#chartCarousel").carousel("cycle");
-  });
+  // Initialize the Chapas section by default
+  dashboardController.initializeChapas();
 });
 
 if (localStorage.getItem("isLoggedIn") !== "true") {

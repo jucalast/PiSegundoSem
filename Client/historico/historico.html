@@ -37,16 +37,16 @@
                         </div>
                         <ul class="nav flex-column">
                             <li class="nav-item mb-2 mt-5">
-                                <a class="nav-link" href="#"> Chapas </a>
+                                <a class="nav-link" href="#">Chapas</a>
                             </li>
                             <li class="nav-item mb-2">
-                                <a class="nav-link" href="#"> Items </a>
+                                <a class="nav-link" href="#">Items</a>
                             </li>
                             <li class="nav-item mb-2">
-                                <a class="nav-link" href="#"> Máquinas </a>
+                                <a class="nav-link" href="#">Máquinas</a>
                             </li>
                             <li class="nav-item mb-2">
-                                <a class="nav-link" href="#"> Usuários </a>
+                                <a class="nav-link" href="#">Usuários</a>
                             </li>
                         </ul>
                     </div>
@@ -79,9 +79,10 @@
                         </div>
                     </div>
 
-                    <!-- 1 seção -->
+                    <!-- chapas -->
                     <div class="container-fluid d-flex flex-column vh-100">
                         <div class="row flex-grow-1 overflow-hidden">
+                            <!-- 1 seção -->
                             <div class="col-lg-6 col-md-12 d-flex flex-column pt-3">
                                 <div class="flex-grow-1 p-3 position-relative border rounded">
                                     <div id="chartCarousel" class="carousel slide h-100 overflow-auto" data-ride="carousel">
@@ -126,6 +127,60 @@
                                             <tbody></tbody>
                                         </table>
                                     </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 'items' layout -->
+                    <div id="items-layout" class="container-fluid d-flex flex-column vh-100" style="display: none">
+                        <!-- 1st section (table) -->
+                        <div class="row flex-grow-1 overflow-hidden">
+                            <div class="col-12 d-flex flex-column pt-3">
+                                <div class="flex-grow-1 overflow-auto">
+                                    <!-- Wrapper for the table -->
+                                    <div id="itemsTableWrapper" class="expandable">
+                                        <table id="itemsTable" class="display w-100">
+                                            <thead></thead>
+                                            <tbody></tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 2nd and 3rd sections (charts and cards) -->
+                        <div class="row flex-grow-1 overflow-hidden">
+                            <!-- 2nd section (charts) -->
+                            <div class="col-lg-6 col-md-12 d-flex flex-column pt-3">
+                                <div class="flex-grow-1 p-3 position-relative border rounded">
+                                    <div id="itemsChartCarousel" class="carousel slide h-100 overflow-auto" data-ride="carousel">
+                                        <!-- Slides -->
+                                        <div class="carousel-inner">
+                                            <div class="carousel-item active">
+                                                <canvas id="itemsChart1"></canvas>
+                                            </div>
+                                            <div class="carousel-item">
+                                                <canvas id="itemsChart2"></canvas>
+                                            </div>
+                                            <div class="carousel-item">
+                                                <canvas id="itemsChart3"></canvas>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- Indicators -->
+                                    <ol class="carousel-indicators position-absolute bottom-0 start-50 translate-middle-x">
+                                        <li data-target="#itemsChartCarousel" data-slide-to="0" class="active"></li>
+                                        <li data-target="#itemsChartCarousel" data-slide-to="1"></li>
+                                        <li data-target="#itemsChartCarousel" data-slide-to="2"></li>
+                                    </ol>
+                                </div>
+                            </div>
+
+                            <!-- 3rd section (cards) -->
+                            <div class="col-lg-6 col-md-12 d-flex flex-column pt-3">
+                                <div class="flex-grow-1 overflow-auto p-3">
+                                    <div id="itemsCards" class="d-flex flex-wrap justify-content-start"></div>
                                 </div>
                             </div>
                         </div>
