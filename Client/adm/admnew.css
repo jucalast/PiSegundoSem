@@ -393,7 +393,7 @@ max-height: 100%;
   display: flex;
   flex-wrap: wrap;
 
-  height: 100%;
+  height: 90%;
 
 }
 
@@ -417,7 +417,7 @@ max-height: 100%;
   bottom: 0;
   background-color: #141414;
   z-index: 999;
-
+  width: 100%;
 }
 
 .modal-content-3 {
@@ -598,10 +598,10 @@ span.item-number {
   } 
 
   .conteudoInterno {
-
     overflow-y: auto;
-    max-height: 4778%;
-    margin-bottom: 0.5rem;
+    max-height: 50%;
+    height: 40%;
+    margin-bottom: 7REM;
   }
   
 }
@@ -750,7 +750,7 @@ p {
   display: flex;
   align-items: center;
   margin-bottom: 10px; /* Ajuste o espaço entre os cards conforme necessário */
- 
+ width: fit-content;
 }
 
 .drag-icon {
@@ -770,9 +770,10 @@ p {
   display: flex;
   gap: 1rem;
   border-radius: 1rem;
-  margin-bottom: 2rem;
   flex-direction: column;
-  width: fit-content;
+  width: 100%;
+  overflow-y: auto;
+  max-height: 80%;
 }
 
 #finalizadoItemsList {
@@ -787,16 +788,16 @@ p {
 .itensContainerstatus {
   display: flex;
   flex-direction: column;
-  overflow-y: auto;
-  max-height: 80%;
+
   border-radius: 1rem;
+  border-radius: 2REM;
 }
 
 .textoModal {
   background-color: #2f2f2f;
   width: fit-content;
   padding: 0.5rem 1rem;
-  margin-bottom: 3rem;
+  margin-bottom: 2rem;
   margin-top: 1rem;
   border-radius: 1rem;
   color: #929292;
@@ -875,29 +876,58 @@ h2 {
   gap: 1rem;
   border-radius: 8px;
   background-color: #1d1d1d;
-  width: fit-content;
   border-radius: 1rem !important;
   flex-direction: row;
   padding: 0;
-  width: fit-content;
-  min-width: 170px;
-  font-size: calc(1vw + 15px);
+  font-size: calc(1vw + 10px);
   align-items: center;
 display: flex;
+
 }
 
 /* Responsividade para tela menor que 902px */
 @media (max-width: 902px) {
   .card {
-    width: 40% !important;
     flex-direction: column !important;
     height: fit-content;
+    max-width: 10em;
   }
 
   .card-header {
     width: 100%;
   }
 
+  #confirmarOrdem {
+    font-size: 1.9rem;
+    margin-bottom: 9rem !important;
+  }
+
+  .drag-icon {
+    width: 20px;
+    height: 20px;
+  }
+
+  span.item-number {
+    font-size: 1rem;
+    padding: 0.2rem;
+    width: 2rem;
+    height: 2rem;
+    border-radius: 0.5rem;
+  }
+
+  .item-card {
+    flex-direction: column;
+    width: 10REM;
+  }
+
+  .status-produzindo {
+    padding: 0.7rem;
+    width: fit-content;
+  }
+
+  #produzindoItemsList {
+    max-height: 70%;
+  }
 
 }
 
@@ -932,21 +962,25 @@ display: flex;
   font-size: 150%;
   color: #b8b8b8;
   background: #292929;
+  margin-bottom: 2rem;
 }
 
 div.card-body {
   display: flex;
   color: #cccccc;
-  padding: 0;
+  padding: 0.5rem;
 flex-wrap: wrap;
 background: #1d1d1d;
 gap: 1rem;
-padding: 1rem;
 border-radius: 1rem;
+
+
 }
 
 .maquina-div {
-  padding: 1rem;
+  display: flex;
+  padding: 0.5rem 1rem;
+
   background: #5fff8228;
   color: #5fff82;
 border-radius: 1rem;
@@ -1010,10 +1044,21 @@ margin-right: 1rem;
   outline: none; /* Remove a borda ao clicar */
 }
 
-#partNumberCardsContainer{
+#partNumberCardsContainer {
   overflow-y: auto;
   max-height: 60vh;
 }
+
+#partNumberCardsContainer::-webkit-scrollbar {
+  width: 0px;
+  background: transparent; /* opcional: faz a barra de rolagem ficar invisível */
+}
+
+#partNumberCardsContainer {
+  -ms-overflow-style: none;  /* IE 10+ */
+  scrollbar-width: none;  /* Firefox */
+}
+
 
 .card-wrapper {
   display: flex;
@@ -1045,12 +1090,13 @@ gap: 1rem;
   background: #232323;
   height: 4rem;
   border-radius: 1rem;
-  margin-left: 1rem;
+  margin: 1rem;
+  margin-top: 0;
   text-align: center;
   justify-content: center;
   align-items: center;
   padding: 1rem;
-  font-size: calc(1vw + 15px);
+  font-size: calc(1vw + 10px);
   color: #929292;
   display: flex;
 }
