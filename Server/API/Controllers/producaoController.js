@@ -30,8 +30,13 @@ class ProducaoController {
             id_item_maquina: true,
             ordem: true,
             prazo: true,
-            corte: true,
+            medida: true,
             finalizado: true,
+            op: true, //adicionado V
+            sistema: true,
+            cliente: true,
+            quantidade: true,
+            colaborador: true, // adicionado A
             itemId: true,
             Item: {
               select: {

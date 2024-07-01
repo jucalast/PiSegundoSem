@@ -1,5 +1,51 @@
 /* ======================================
-Dark Mode Toggle Styles 
+   General Styles
+====================================== */
+
+body.light-mode {
+  background-color: #fff;
+  color: #000;
+}
+
+body.dark-mode .kanban-column {
+  background-color: #444;
+}
+
+body.dark-mode .kanban-item {
+  color: #fff;
+}
+
+/* REMOVÍVEL (faz os cards parecerem que está em um jogo kkkkk */
+.card-body {
+  background-color: rgba(255, 255, 255, 0.068);
+  border: 1px solid #2a2a2a;
+  border-radius: 10px;
+  padding: 10px;
+  margin-bottom: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+
+}
+
+.info-div {
+  background-color: rgba(255, 255, 255, 0.068);
+  border: 1px solid #2a2a2a;
+  border-radius: 10px;
+  padding: 5px;
+  margin-bottom: 5px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* ======================================
+   Navbar Styles
+====================================== */
+
+.navbar-right {
+  display: flex;
+  align-items: center;
+}
+
+/* ======================================
+   Dark Mode Toggle Styles
 ====================================== */
 
 .dark-mode-toggle input[type="checkbox"] {
@@ -32,21 +78,15 @@ Dark Mode Toggle Styles
 
 .dark-mode-toggle input[type="checkbox"]:checked + label {
   background-color: #6eec07;
-  /* box-shadow: 0 0 30px 20px #6eec074f; Remove this line */
 }
 
 .dark-mode-toggle input[type="checkbox"]:checked + label:after {
   transform: translateX(100%);
 }
 
-.navbar-right {
-  display: flex;
-  align-items: center;
-}
-
-/* ========================
-Cards Styles
-========================== */
+/* ======================================
+   Card Container Styles
+====================================== */
 
 .card-container {
   margin-top: 20px;
@@ -54,16 +94,23 @@ Cards Styles
   margin-left: 25%;
 }
 
-.flex-container {
-  display: flex;
-  justify-content: space-between;
+@media screen and (max-width: 600px) {
+  .card-container {
+    margin-right: 2%;
+    margin-left: 2%;
+  }
 }
+
+/* ======================================
+   Card Styles
+====================================== */
 
 .card {
   border-radius: 10px;
   overflow: hidden;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
+
 .part-number {
   background: #7a1bff23 !important;
   color: #bf8cff;
@@ -86,46 +133,14 @@ Cards Styles
   border-radius: 10px;
 }
 
-.chapa-details {
-  /* background-color: #28a745; */
-  display: flex;
-  justify-content: space-between;
-  width: 75%;
-}
-
-.chapa-card {
-  border-radius: 10px;
-}
-.chapa-card .card-body {
+.ordem-div {
+  background-color: #007bff;
+  color: white;
   padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 5px;
 }
 
-.custom-checkbox {
-  position: relative;
-  display: flex;
-  align-items: center;
-}
-
-/* checkboxes */
-.custom-checkbox input[type="checkbox"] {
-  position: absolute;
-  opacity: 0;
-  cursor: pointer;
-}
-.custom-checkbox .checkmark {
-  width: 20px;
-  height: 20px;
-  background-color: #eee;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  display: inline-block;
-  margin-right: 10px;
-}
-.custom-checkbox input:checked ~ .checkmark {
-  background-color: #28a745;
-}
-
-.ordem-div,
 .prazo-div {
   background-color: #4d7099;
   color: white;
@@ -153,6 +168,79 @@ Cards Styles
   }
 }
 
+.finalizado {
+  color: #727272;
+  backdrop-filter: blur(10px);
+  opacity: 0.5;
+}
+
+/* ======================================
+   Chapa Card Styles
+====================================== */
+
+.chapa-card {
+  border-radius: 10px;
+}
+
+.chapa-card .card-body {
+  background-color: rgba(255, 255, 255, 0.068);
+  padding: 10px;
+}
+
+.chapa-details {
+  display: flex;
+  justify-content: space-between;
+  width: 70%;
+}
+
+/* ======================================
+   Custom Checkbox Styles
+====================================== */
+
+.custom-checkbox {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.custom-checkbox input[type="checkbox"] {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+}
+
+.custom-checkbox .checkmark {
+  width: 20px;
+  height: 20px;
+  background-color: #eee;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  display: inline-block;
+  margin-right: 10px;
+}
+
+.custom-checkbox input:checked ~ .checkmark {
+  background-color: #28a745;
+}
+
+.custom-checkbox input[type="checkbox"]:disabled + .checkmark::before {
+  content: "\f023";
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+  font-size: 12px;
+  color: red;
+  display: block;
+  text-align: center;
+}
+
+/* ======================================
+   Button Styles
+====================================== */
+
 .btn-submit {
   display: block;
   margin-top: 10px;
@@ -164,59 +252,139 @@ Cards Styles
   cursor: not-allowed;
   opacity: 0.6;
 }
+
 .btn-submit.enabled {
   cursor: pointer;
   opacity: 1;
 }
+
 .btn-submit.align-right {
   margin-left: auto;
 }
 
-.finalizado {
-  color: #727272;
-  backdrop-filter: blur(10px);
-  opacity: 0.5;
-}
+/* ======================================
+   Flex Container Styles
+====================================== */
 
-.proxima {
-  position: relative;
-}
-
-.proxima::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 15px;
-  right: 15px;
-  bottom: 0;
-  background: rgba(61, 167, 40, 0.151);
-  border-radius: 10px;
-  z-index: 1;
-}
-
-@media screen and (max-width: 600px) {
-  .card-container {
-    margin-right: 2%;
-    margin-left: 2%;
-  }
-  .keys {
-    display: none;
-  }
-
-  .card {
-    font-size: 11px;
-    font-weight: normal;
-  }
+.flex-container {
+  display: flex;
+  justify-content: space-between;
 }
 
 /* ======================================
-Light Mode
+   Kanban Board Styles
 ====================================== */
 
-body.light-mode {
-  background-color: #fff;
+#kanban-board {
+  display: flex;
+  justify-content: space-evenly;
+  padding: 15px;
+  transition: flex-direction 0.5s ease-in-out;
+}
+
+.kanban-column {
+  width: 32%;
+  background-color: #f0f0f0;
+  padding: 10px;
+  border-radius: 5px;
+  transition: width 0.5s ease-in-out;
+  height: 87vh;
+}
+
+@media (max-width: 1600px) {
+  #kanban-board {
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .kanban-column {
+    width: 50%;
+  }
+
+  #to-do {
+    order: 1;
+  }
+
+  #in-progress {
+    order: 2;
+  }
+
+  #done {
+    order: 3;
+  }
+}
+
+body.dark-mode .kanban-column h3 {
+  color: #fff;
+}
+
+body.light-mode .kanban-column h3 {
   color: #000;
 }
+
+@media (prefers-color-scheme: dark) {
+  body .kanban-column {
+    background: rgba(255, 255, 255, 0.1);
+    border: 3px solid transparent;
+    color: #fff;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: 0.7rem;
+    padding: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  }
+}
+
+@media (prefers-color-scheme: light) {
+  body .kanban-column {
+    background: rgba(128, 128, 128, 0.1);
+    border: 3px solid #000;
+    color: #000;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: 0.7rem;
+    padding: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  }
+}
+
+body .kanban-column#done,
+body .kanban-column#to-do,
+body .kanban-column#in-progress {
+  background: rgba(128, 128, 128, 0.05);
+  border: 3px solid rgba(128, 128, 128, 0.5);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: 0.7rem;
+  padding: 10px;
+}
+
+.kanban-items {
+  background-color: #8080801f;
+  border-radius: 5px;
+  overflow-y: auto;
+  height: 90%;
+  padding: 10px;
+  margin: 10px;
+}
+
+.kanban-item {
+  padding: 10px;
+  border-radius: 5px;
+}
+
+/* ======================================
+   Dark Mode Specific Styles
+====================================== */
+
+body.dark-mode .kanban-column {
+  background-color: #444;
+}
+
+/* ======================================
+   Light Mode Specific Styles
+====================================== */
 
 body.light-mode .navbar {
   background-color: #f8f9fa;
@@ -265,6 +433,10 @@ body.light-mode .btn-submit {
   color: #ffffff;
 }
 
+/* ======================================
+   Dark Mode Select Styles
+====================================== */
+
 .dark-mode-select {
   padding: 10px;
   background-color: #464646;
@@ -286,154 +458,4 @@ body.light-mode .dark-mode-select {
 body.light-mode .dark-mode-select option {
   background-color: #fff;
   color: #333;
-}
-
-#kanban-board {
-  display: flex;
-  justify-content: space-evenly;
-  padding: 15px;
-}
-
-#kanban-board {
-  display: flex;
-  justify-content: space-evenly;
-  padding: 15px;
-  transition: flex-direction 0.5s ease-in-out; /* Adiciona transição suave */
-}
-
-.kanban-column {
-  width: 32%;
-  background-color: #f0f0f0;
-  padding: 10px;
-  border-radius: 5px;
-  transition: width 0.5s ease-in-out; /* Adiciona transição suave */
-}
-
-#kanban-board {
-  display: flex;
-  justify-content: space-evenly;
-  padding: 15px;
-}
-
-.kanban-column {
-    width: 32%;
-    background-color: #f0f0f0;
-    padding: 10px;
-    border-radius: 5px;
-}
-
-@media (max-width: 1600px) {
-    #kanban-board {
-        flex-direction: column;
-        align-items: center;
-        gap: 20px;
-    }
-
-    .kanban-column {
-        width: 80%; 
-    }
-
-    #to-do {
-        order: 1;
-    }
-
-    #in-progress {
-        order: 2;
-    }
-
-    #done {
-        order: 3;
-    }
-}
-
-body.dark-mode .kanban-column h3 {
-  color: #fff;
-}
-body.light-mode .kanban-column h3 {
-  color: #000;
-}
-
-@media (prefers-color-scheme: dark) {
-  body .kanban-column {
-    background: rgba(255, 255, 255, 0.1);
-    border: 3px solid transparent;
-    color: #fff;
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    border-radius: 0.7rem;
-    padding: 10px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-  }
-}
-
-@media (prefers-color-scheme: light) {
-  body .kanban-column {
-    background: rgba(128, 128, 128, 0.1);
-    border: 3px solid #000;
-    color: #000;
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    border-radius: 0.7rem;
-    padding: 10px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-  }
-}
-
-body .kanban-column#done {
-  background: rgba(128, 128, 128, 0.05);
-  border: 3px solid rgba(128, 128, 128, 0.5);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  border-radius: 0.7rem;
-  padding: 10px;
-}
-
-body .kanban-column#to-do {
-  background: rgba(0, 217, 255, 0.05);
-  border: 3px solid rgba(0, 195, 255, 0.5);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  border-radius: 0.7rem;
-  padding: 10px;
-}
-
-body .kanban-column#in-progress {
-  background: rgba(0, 255, 21, 0.05);
-  border: 3px solid rgba(0, 255, 21, 0.5);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  border-radius: 0.7rem;
-  padding: 10px;
-}
-
-.kanban-items {
-  min-height: 300px;
-}
-
-.kanban-item {
-  background-color: #fff;
-  padding: 10px;
-  margin-bottom: 10px;
-  border-radius: 5px;
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
-}
-
-body.dark-mode .kanban-column {
-  background-color: #444;
-}
-
-body.dark-mode .kanban-item {
-  background-color: #555;
-  color: #fff;
-  box-shadow: 0 0 5px rgba(255, 255, 255, 0.1);
-}
-
-.custom-checkbox input[type="checkbox"]:disabled + .checkmark::before {
-  content: "\f023";
-  font-family: "Font Awesome 5 Free";
-  font-weight: 900;
-  font-size: 12px;
-  color: red;
-  display: block;
-  text-align: center;
 }

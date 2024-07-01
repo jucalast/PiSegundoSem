@@ -33,8 +33,19 @@ export function createCard(item, maquinaName, estado, executor) {
 
   cardBody.appendChild(headerDiv);
 
+  const contentDiv = document.createElement("div");
+  contentDiv.style.display = "flex";
+  contentDiv.style.justifyContent = "space-between";
+
   const chapasList = createChapasList(item.Item.chapas, item);
-  cardBody.appendChild(chapasList);
+  chapasList.style.flex = "0 0 48%";
+  contentDiv.appendChild(chapasList);
+
+  const itemInfo = createItemInfo(item);
+  itemInfo.style.flex = "0 0 48%";
+  contentDiv.appendChild(itemInfo);
+
+  cardBody.appendChild(contentDiv);
 
   const buttonContainer = document.createElement("div");
   buttonContainer.style.display = "flex";
@@ -148,12 +159,11 @@ export function createChapasHeader(keys) {
 /* LISTA DE CHAPAS                */
 /* ============================== */
 
-export function createChapasList(chapas, item) {
+export function createChapasList(chapas) {
   const chapasContainer = document.createElement("div");
   chapasContainer.className = "chapas-container";
 
-  // Create header
-  const header = createChapasHeader(["CHAPAS", "QUANT.", "CLIENTE", "MEDIDA"]);
+  const header = createChapasHeader(["CHAPAS", "QUANT."]);
   chapasContainer.appendChild(header);
 
   chapas.forEach((chapa) => {
@@ -182,14 +192,6 @@ export function createChapasList(chapas, item) {
     const quantidadeDiv = document.createElement("div");
     quantidadeDiv.textContent = `${chapa.quantidade}`;
     chapaDetailsDiv.appendChild(quantidadeDiv);
-
-    const numeroClienteDiv = document.createElement("div");
-    numeroClienteDiv.textContent = `${chapa.chapa.numero_cliente}`;
-    chapaDetailsDiv.appendChild(numeroClienteDiv);
-
-    const medidaCorteDiv = document.createElement("div");
-    medidaCorteDiv.textContent = `${item.corte}`;
-    chapaDetailsDiv.appendChild(medidaCorteDiv);
 
     const customCheckboxDiv = document.createElement("div");
     customCheckboxDiv.className = "custom-checkbox";
@@ -221,4 +223,34 @@ export function createChapasList(chapas, item) {
   });
 
   return chapasContainer;
+}
+
+/* ============================== */
+/* Info dos Itens                 */
+/* ============================== */
+function createItemInfo(item) {
+  const itemInfo = document.createElement("div");
+
+  const createInfoDiv = (text) => {
+    const div = document.createElement("div");
+    div.textContent = text;
+    div.className = "info-div";
+    return div;
+  };
+
+  const infoItems = [
+    `Medida: ${item.medida}`,
+    `OP: ${item.op}`,
+    `Sistema: ${item.sistema}`,
+    `Cliente: ${item.cliente}`,
+    `Quantidade: ${item.quantidade}`,
+    `Colaborador: ${item.colaborador}`,
+  ];
+
+  infoItems.forEach((infoItem) => {
+    const infoDiv = createInfoDiv(infoItem);
+    itemInfo.appendChild(infoDiv);
+  });
+
+  return itemInfo;
 }

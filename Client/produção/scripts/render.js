@@ -1,7 +1,6 @@
 import { fetchMaquinaData } from "./connections.js";
 import { createCard } from "./cardCreator.js";
 
-// Função para renderizar o quadro Kanban
 export async function render(name, userName) {
   const data = await fetchMaquinaData(name);
   if (data && data.items) {

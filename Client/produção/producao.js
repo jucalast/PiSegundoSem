@@ -1,40 +1,42 @@
 import { setUserInfo, setMachineName } from "./scripts/userInfo.js";
 import { render } from "./scripts/render.js";
 
-if (localStorage.getItem("isLoggedIn") !== "true") {
+function redirectToLogin() {
   window.location.href = "../login/login.html";
+}
+
+function handleLogout(event) {
+  localStorage.clear();
+  window.location.href = from === "home" ? "../home/home.html" : "../login/login.html";
+}
+
+function initializeUserInfo() {
+  const username = localStorage.getItem("nome") || "UserName";
+  const machineName = localStorage.getItem("maquina") || "MachineName";
+  setUserInfo(username);
+  setMachineName(machineName);
+  render(machineName, username);
+}
+
+function updateTheme() {
+  const darkModeToggle = document.getElementById("darkModeToggle");
+  const isChecked = darkModeToggle.checked;
+  document.body.classList.toggle("light-mode", !isChecked);
+  document.body.classList.toggle("dark-mode", isChecked);
+}
+
+function addEventListeners() {
+  document.getElementById("logoutLink").addEventListener("click", handleLogout);
+  document.getElementById("darkModeToggle").addEventListener("change", updateTheme);
+}
+
+if (localStorage.getItem("isLoggedIn") !== "true") {
+  redirectToLogin();
 }
 
 const urlParams = new URLSearchParams(window.location.search);
 const from = urlParams.get("from");
 
-document.getElementById("logoutLink").addEventListener("click", function (event) {
-  localStorage.clear();
-  if (from === "home") {
-    window.location.href = "../home/home.html";
-  } else {
-    window.location.href = "../login/login.html";
-  }
-});
-
-const username = localStorage.getItem("nome") || "UserName";
-let maquinaName = localStorage.getItem("maquina") || "MachineName";
-
-setUserInfo(username);
-setMachineName(maquinaName);
-
-if (from === "home") {
-  render(maquinaName, username);
-} else {
-  render(maquinaName, username);
-}
-
-function updateTheme() {
-  var darkModeToggle = document.getElementById("darkModeToggle");
-  document.body.classList.toggle("light-mode", !darkModeToggle.checked);
-  document.body.classList.toggle("dark-mode", darkModeToggle.checked);
-}
-
+initializeUserInfo();
 updateTheme();
-
-darkModeToggle.addEventListener("change", updateTheme);
+addEventListeners();

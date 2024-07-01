@@ -729,10 +729,6 @@ input[type="checkbox"] {
       width: 20px;
       height: 20px;
  }
-  .card-checkbox:checked + .card-checkbox::after {
-      width: 20px;
-      height: 20px;
- }
   .card-part-number, .card-status-comprado, .card-status-parcial, .card-status-reservado {
       padding: 5px;
       margin-right: 5px;
@@ -869,11 +865,6 @@ input[type="checkbox"] {
 .subcard-body {
   padding: 10px;
   background-color: #3b3b3b;
-}
-
-.highlighted {
-  border: 1px solid #ffc1076d;
-  background-color: #ffc10714;
 }
 
 
